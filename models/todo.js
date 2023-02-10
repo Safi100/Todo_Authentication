@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const {Schema} = mongoose
 
-const userSchema = new Schema({
+const todoSchema = new Schema({
     body: {
         type: String,
         required: true
@@ -22,4 +22,4 @@ const userSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('Todo', todoSchema)
