@@ -1,0 +1,62 @@
+.container{
+    /* height: 500px; */
+    width: 90%;
+    max-width: 500px;
+    background: #fff;
+    margin: auto;
+}
+body{
+    display: flex;
+    background: url('../assets/wallpaper.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.header{
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #eee;
+}
+.header > * {
+    width: 50%;
+    text-align: center;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    /* border-bottom: 3px solid gray; */
+    cursor: pointer;
+}
+.header > *:hover{
+    color: #fa5757;
+}
+
+.active{
+    border-bottom: 3px solid #fa5757;
+}
+form{
+    padding: 30px;
+}
+form div{
+    margin-bottom: 30px;
+}
+form div input{
+    width: 100%;
+    padding: 5px 10px;
+}
+form div input:focus{
+    outline-color: #fa5757;
+}
+button{
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
+    border: 0;
+    background: #fa5757;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+.error_message{
+    color: red;
+    margin-top: 10px;    
+}
