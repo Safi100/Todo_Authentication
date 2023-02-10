@@ -10,10 +10,38 @@
 body{
     min-height: 100vh;
 }
-
-a{
-    text-decoration: none;
+.wrapper{
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+li{
+    list-style: none;
 }
 a{
+    text-decoration: none;
     color: #000;
+}
+nav{
+    background-color: #FEC868;
+    padding: 20px 0;
+}
+nav .wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.welcome{
+    margin-top: 15px;
+}
+.logoutBtn{
+    border: 2px solid black;
+    padding: 2px 5px;
+    transition: background 0.3s linear;
+}
+.logoutBtn:hover{
+    background: #fff;
+}
+.success_message{
+    color: green;    
 }
