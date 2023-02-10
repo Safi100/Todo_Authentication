@@ -5,8 +5,10 @@ const methodOverRide = require('method-override')
 const session = require('express-session')
 const {isAuthenticated, LoggedIn} = require('./middleware')
 const flash = require('connect-flash')
+const moment = require('moment')
 const bcrypt = require('bcrypt')
 const User = require('./models/user')
+const Todo = require('./models/todo')
 const app = express()
 mongoose.set('strictQuery', true)
 mongoose.connect('mongodb://localhost:27017/Todos_auth', {
@@ -34,15 +36,28 @@ app.use(session({
 app.use(flash())
 
 app.use((req, res, next) => {
-    console.log(req.session);
     res.locals.currentUser = req.session.user
     res.locals.success = req.flash('success')
     res.locals.error = req.flash('error')
     next()
 })
 
-app.get('/', isAuthenticated, (req, res) => {
-    res.render('index')
+app.get('/', isAuthenticated, async (req, res) => {
+    const id = req.session.user
+    const user = await User.findById(id)
+    const todos = await Todo.find({author: {$in: id}})
+    res.render('index', {user, todos, moment})
+})
+app.post('/', isAuthenticated, async (req, res) => {
+    const {body} = req.body.todo
+    const todo = new Todo({
+        body,
+        createdAt: new Date()
+    })
+    todo.author = req.session.user
+    await todo.save()
+    req.flash('success', "todo added successfully!")
+    res.redirect('/')
 })
 app.get('/login', LoggedIn, (req, res) => {
     res.render('login')
@@ -52,7 +67,6 @@ app.post('/login', LoggedIn, async (req, res) => {
     const user = await User.findOne({username})
     if(user){
         const match = await bcrypt.compare(password, user.password)
-        console.log(match);
         if(match) {
             req.session.user = user._id
             return res.redirect('/')
