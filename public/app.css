@@ -61,3 +61,19 @@ nav .wrapper{
 .blockk p {
     font-size: 30px;
 }
+.todos_container{
+    padding: 50px 0;
+    display: flex;
+    flex-wrap:wrap;
+    /* gap: 20px; */
+    justify-content: space-between;
+}
+.todos_container > * {
+    flex-basis:50%;
+}
+.todo-block{
+    padding: 10px 20px;
+    background:linear-gradient(to right, #ABC270, #FDA769);
+    margin-bottom: 20px;
+    max-width: 500px;
+}
