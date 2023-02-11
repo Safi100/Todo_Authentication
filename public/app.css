@@ -45,3 +45,19 @@ nav .wrapper{
 .success_message{
     color: green;    
 }
+.notFound_img{
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 30px;
+}
+.link{
+    color: blue;
+}
+.blockk{
+    text-align: center;
+}
+.blockk p {
+    font-size: 30px;
+}
