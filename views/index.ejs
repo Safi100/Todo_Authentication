@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/app.css">
+    <title>Todo App</title>
+</head>
+<body>
+    <nav>
+        <div class="wrapper">
+            <h1 class="logo"><a href="/">Todos</a></h1>
+            <ul>
+                <li><a class="logoutBtn" href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="wrapper">
+        <h1 class="welcome">Welcome <%= user.username %></h1>
+        <% if(success && success.length) {%>
+            <p class="success_message"><%= success %></p>
+        <% } %>
+        <form action="/" method="POST">
+            <input type="text" name="todo[body]">
+            <button>submit</button>
+        </form>
+        <% if(todos.length > 0) {%>
+            <div class="todos_container">
+                <% todos.forEach(todo => { %>
+                    <div class="">
+                        <p><%= todo.body %></p>
+                        <p class=""><%= moment(todo.createdAt).fromNow() %></p>
+                    </div>
+                <% }) %>
+            </div>
+        <% }else{ %>
+            <h2>no todos yet...</h2>
+        <% } %>
+    </div>
+</body>
+</html>
