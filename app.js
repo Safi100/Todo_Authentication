@@ -109,4 +109,8 @@ app.post('/register', LoggedIn, async (req, res) => {
     
 })
 
+app.all('*', (req, res)=>{
+    res.status(404).render('notFound')
+})
+
 app.listen(3000, ()=> console.log("Serving on port 3000"))
