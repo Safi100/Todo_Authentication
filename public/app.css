@@ -74,6 +74,9 @@ nav .wrapper{
     flex-basis:50%;
 }
 .todo-block{
+    display: flex;
+    gap: 20px;
+    align-items: center;
     padding: 10px 20px;
     background:linear-gradient(to right, #ABC270, #FDA769);
     background:linear-gradient(to right, #00334E, #145374, #5588A3);
@@ -108,10 +111,25 @@ nav .wrapper{
 }
 
 @media screen and (max-width:768px) {
-    .todos_container{
-
-    }
     .todos_container > * {
         flex-basis: 100%;
     }
+}
+.complete_btn{
+    background:  transparent;
+    border-radius: 50%;
+    width:30px;
+    height:30px;
+    border:2px solid #fff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.complete_btn img{
+    width: 20px;
+}
+.completed{
+    background-color: #000;
 }
