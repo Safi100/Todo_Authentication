@@ -18,19 +18,33 @@
     </nav>
     <div class="wrapper">
         <h1 class="welcome">Welcome <%= user.username %></h1>
-        <% if(success && success.length) {%>
-            <p class="success_message"><%= success %></p>
-        <% } %>
         <form action="/" method="POST">
-            <input type="text" name="todo[body]">
-            <button>submit</button>
+            <div class="input_container">
+                <input type="text" name="todo[body]" required placeholder="Create todo with auth...">
+                <button class="submit_btn"><img src="../assets/icon.png" alt="icon"></button>
+            </div>
+            <% if(success && success.length) {%>
+                <p class="success_message"><%= success %></p>
+            <% } %>
+            <% if(error && error.length) {%>
+                <p class="error_message"><%= error %></p>
+            <% } %>
         </form>
         <% if(todos.length > 0) {%>
             <div class="todos_container">
                 <% todos.forEach(todo => { %>
-                    <div class="">
-                        <p><%= todo.body %></p>
-                        <p class=""><%= moment(todo.createdAt).fromNow() %></p>
+                    <div class="todo-block">
+                        <form class="completed_container" action="/<%= todo._id %>?_method=PUT" method="POST">
+                            <% if(todo.isCompleted){ %>
+                            <button class="complete_btn completed"><img src="../assets/completed.png" alt=" completed-icon"></button>
+                            <% }else{ %>
+                            <button class="complete_btn"></button>
+                            <% } %>
+                        </form>
+                        <div>
+                            <p class="todo-body"><%= todo.body %></p>
+                            <p class="todo-moment"><%= moment(todo.createdAt).fromNow() %></p>
+                        </div>
                     </div>
                 <% }) %>
             </div>
