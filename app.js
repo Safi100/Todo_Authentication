@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const methodOverRide = require('method-override')
 const session = require('express-session')
-const {isAuthenticated, LoggedIn} = require('./middleware')
+const {isAuthenticated, LoggedIn, isAuthor} = require('./middleware')
 const flash = require('connect-flash')
 const moment = require('moment')
 const bcrypt = require('bcrypt')
@@ -59,6 +59,13 @@ app.post('/', isAuthenticated, async (req, res) => {
     req.flash('success', "todo added successfully!")
     res.redirect('/')
 })
+app.put('/:id', isAuthenticated, isAuthor, async (req, res) => {
+    const id = req.params.id
+    const todo = await Todo.findById(id)
+    todo.isCompleted = !todo.isCompleted
+    await todo.save()
+    res.redirect('/')
+})
 app.get('/login', LoggedIn, (req, res) => {
     res.render('login')
 })
@@ -105,8 +112,7 @@ app.post('/register', LoggedIn, async (req, res) => {
         await user.save()
         req.session.user = user._id
         res.redirect('/')
-    }
-    
+    }  
 })
 
 app.all('*', (req, res)=>{
