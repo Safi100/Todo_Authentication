@@ -133,3 +133,7 @@ nav .wrapper{
 .completed{
     background-color: #000;
 }
+.error_message{
+    color: red;
+    margin-top: 5px;
+}
