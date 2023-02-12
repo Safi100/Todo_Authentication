@@ -20,10 +20,10 @@ li{
 }
 a{
     text-decoration: none;
-    color: #000;
+    color: #fff;
 }
 nav{
-    background-color: #FEC868;
+    background-color: #145374;
     padding: 20px 0;
 }
 nav .wrapper{
@@ -33,16 +33,18 @@ nav .wrapper{
 }
 .welcome{
     margin-top: 15px;
+    margin-bottom: 30px;
 }
 .logoutBtn{
-    border: 2px solid black;
+    border: 2px solid #fff;
     padding: 2px 5px;
     transition: background 0.3s linear;
 }
 .logoutBtn:hover{
-    background: #fff;
+    background: #000;
 }
 .success_message{
+    margin-top: 5px;
     color: green;    
 }
 .notFound_img{
@@ -65,7 +67,7 @@ nav .wrapper{
     padding: 50px 0;
     display: flex;
     flex-wrap:wrap;
-    /* gap: 20px; */
+    gap: 20px;
     justify-content: space-between;
 }
 .todos_container > * {
@@ -74,8 +76,13 @@ nav .wrapper{
 .todo-block{
     padding: 10px 20px;
     background:linear-gradient(to right, #ABC270, #FDA769);
-    margin-bottom: 20px;
+    background:linear-gradient(to right, #00334E, #145374, #5588A3);
     max-width: 500px;
+    color: #fff;
+}
+.todo-block p:last-child{
+    color: rgb(255, 255, 255);
+    font-size: 13px;
 }
 .input_container{
     display: flex;
@@ -98,4 +105,13 @@ nav .wrapper{
 }
 .submit_btn img{
     display: block;
+}
+
+@media screen and (max-width:768px) {
+    .todos_container{
+
+    }
+    .todos_container > * {
+        flex-basis: 100%;
+    }
 }
