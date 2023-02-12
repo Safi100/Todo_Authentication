@@ -114,7 +114,10 @@ app.post('/register', LoggedIn, async (req, res) => {
         res.redirect('/')
     }  
 })
-
+app.get('/logout', (req, res) => {
+    req.session.destroy()
+    res.redirect('/')
+})
 app.all('*', (req, res)=>{
     res.status(404).render('notFound')
 })
