@@ -66,6 +66,11 @@ app.put('/:id', isAuthenticated, isAuthor, async (req, res) => {
     await todo.save()
     res.redirect('/')
 })
+app.delete('/:id', isAuthenticated, isAuthor, async (req, res) => {
+    const id = req.params.id
+    const todo = await Todo.findByIdAndDelete(id)
+    res.redirect('/')
+})
 app.get('/login', LoggedIn, (req, res) => {
     res.render('login')
 })
