@@ -41,10 +41,11 @@
                             <button class="complete_btn"></button>
                             <% } %>
                         </form>
-                        <div>
+                        <div class="body-moment">
                             <p class="todo-body"><%= todo.body %></p>
                             <p class="todo-moment"><%= moment(todo.createdAt).fromNow() %></p>
                         </div>
+                        <form action="/<%= todo._id %>?_method=DELETE" method="POST"><button class="deleteBTN"><img src="../assets/delete.png" alt="close"></button></form>
                     </div>
                 <% }) %>
             </div>
