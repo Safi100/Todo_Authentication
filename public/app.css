@@ -137,3 +137,17 @@ nav .wrapper{
     color: red;
     margin-top: 5px;
 }
+.body-moment{
+    width: 100%;
+}
+.deleteBTN{
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    display: block;
+    border-radius: 50%;
+    border: 0;
+}
+.deleteBTN img {
+    display: block;
+}
